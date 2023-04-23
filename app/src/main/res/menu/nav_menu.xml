@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/firstItem"
+        android:title="Bucharest" />
+    <item
+        android:id="@+id/secondItem"
+        android:title="Iasi" />
+    <item
+        android:id="@+id/thirdItem"
+        android:title="Targoviste" />
+    <item
+        android:id="@+id/fourthItem"
+        android:title="Sibiu" />
+    <item
+        android:id="@+id/fifthItem"
+        android:title="Sighisoara" />
+    <item
+        android:id="@+id/sixthItem"
+        android:title="Brasov" />
+    <item
+        android:id="@+id/seventhItem"
+        android:title="Constanta" />
+    <item
+        android:id="@+id/eighthItem"
+        android:title="Craiova" />
+
+</menu>
