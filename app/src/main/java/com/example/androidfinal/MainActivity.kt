@@ -1,5 +1,6 @@
 package com.example.androidfinal
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
@@ -25,29 +26,45 @@ class MainActivity : AppCompatActivity() {
             navView.setNavigationItemSelectedListener {
                 when (it.itemId) {
                     R.id.firstItem -> {
-                        Toast.makeText(this@MainActivity, "First Item Clicked!!!!", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@MainActivity, Bucharest::class.java))
+                        finish()
+                        overridePendingTransition(0, 0)
                     }
                     R.id.secondItem -> {
-                        Toast.makeText(this@MainActivity, "Second Item Clicked!!!!", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@MainActivity, Iasi::class.java))
+                        finish()
+                        overridePendingTransition(0, 0)
                     }
                     R.id.thirdItem -> {
-                        Toast.makeText(this@MainActivity, "third Item Clicked!!!!", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@MainActivity, Targoviste::class.java))
+                        finish()
+                        overridePendingTransition(0, 0)
                     }
                     R.id.fourthItem -> {
-                        Toast.makeText(this@MainActivity, "fourth Item Clicked!!!!!", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@MainActivity, Sibiu::class.java))
+                        finish()
+                        overridePendingTransition(0, 0)
                     }
                     R.id.fifthItem -> {
-                        Toast.makeText(this@MainActivity, "fifth Item Clicked!!!!", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@MainActivity, Sighisoara::class.java))
+                        finish()
+                        overridePendingTransition(0, 0)
                     }
                     R.id.sixthItem -> {
-                        Toast.makeText(this@MainActivity, "sixth Item Clicked!!!!", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@MainActivity, Brasov::class.java))
+                        finish()
+                        overridePendingTransition(0, 0)
                     }
                     R.id.seventhItem -> {
-                        Toast.makeText(this@MainActivity, "seventh Item Clicked!!!!", Toast.LENGTH_SHORT).show()
+                        startActivity(Intent(this@MainActivity, Constanta::class.java))
+                        finish()
+                        overridePendingTransition(0, 0)
                     }
                     R.id.eighthItem -> {
-                        Toast.makeText(this@MainActivity, "eighth Item Clicked!!!!", Toast.LENGTH_SHORT).show() }
-                }
+                        startActivity(Intent(this@MainActivity, Craiova::class.java))
+                        finish()
+                        overridePendingTransition(0, 0)
+                }}
                 true
             }
 

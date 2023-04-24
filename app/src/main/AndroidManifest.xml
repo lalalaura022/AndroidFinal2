@@ -10,6 +10,30 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidFinal">
         <activity
+            android:name=".Craiova"
+            android:exported="false" />
+        <activity
+            android:name=".Constanta"
+            android:exported="false" />
+        <activity
+            android:name=".Brasov"
+            android:exported="false" />
+        <activity
+            android:name=".Sighisoara"
+            android:exported="false" />
+        <activity
+            android:name=".Sibiu"
+            android:exported="false" />
+        <activity
+            android:name=".Targoviste"
+            android:exported="false" />
+        <activity
+            android:name=".Bucharest"
+            android:exported="false" />
+        <activity
+            android:name=".Iasi"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
