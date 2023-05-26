@@ -2,4 +2,6 @@
     <string name="app_name">AndroidFinal</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="facebook_app_id"></string>
+    <string name = "db_login_protocol_scheme"></string>
 </resources>

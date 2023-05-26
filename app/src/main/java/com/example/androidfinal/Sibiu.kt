@@ -1,8 +1,16 @@
 package com.example.androidfinal
 
+import android.animation.ObjectAnimator
+import android.animation.TimeInterpolator
 import android.content.Intent
 import android.os.Bundle
+import android.util.Property
 import android.view.MenuItem
+import android.view.View
+import android.view.animation.DecelerateInterpolator
+import android.view.animation.LinearInterpolator
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +26,12 @@ class Sibiu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySibiuBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val animateButton = findViewById<Button>(R.id.animateButton)
+        val blueView = findViewById<TextView>(R.id.blueView)
+        animateButton.setOnClickListener{
+            animate(blueView, View.TRANSLATION_Y,blueView.translationY, blueView.translationY + 100f, 500, DecelerateInterpolator())
+            animate(blueView, View.ALPHA,1.0f, 0.0f, 2500, LinearInterpolator())
+        }
         binding.apply {
             toggle = ActionBarDrawerToggle(this@Sibiu, drawerLayout, R.string.open, R.string.close)
             drawerLayout.addDrawerListener(toggle)
@@ -72,7 +86,14 @@ class Sibiu : AppCompatActivity() {
             }
 
         }
+    fun animate(target: View, property: Property<View, Float>, from: Float, to: Float, duration: Long, interpolator: TimeInterpolator)
+    {
+        val tY = ObjectAnimator.ofFloat(target, property, from, to)
 
+        tY.duration = duration
+        tY.interpolator = interpolator
+        tY.start()
+    }
         override fun onOptionsItemSelected(item: MenuItem): Boolean {
             if (toggle.onOptionsItemSelected(item)){
                 true

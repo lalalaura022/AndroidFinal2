@@ -1,9 +1,17 @@
 package com.example.androidfinal
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.MenuItem
+import android.view.View
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.MediaController
 import android.widget.Toast
+import android.widget.VideoView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androidfinal.databinding.ActivityIasiBinding
@@ -14,10 +22,32 @@ class Iasi : AppCompatActivity() {
     lateinit var binding : ActivityIasiBinding
     lateinit var toggle: ActionBarDrawerToggle
 
+    lateinit var imageView: ImageView
+    lateinit var button: Button
+    val REQUEST_IMAGE_CAPTURE = 100
+
+
+    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityIasiBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        imageView = findViewById(R.id.imageView2)
+        button = findViewById(R.id.button)
+        button.setOnClickListener {
+            val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+
+            try {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+            } catch (e: ActivityNotFoundException) {
+                Toast.makeText(this, "Error: " + e.localizedMessage, Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        //val mediaCollection = MediaController(this)
+
         binding.apply {
             toggle = ActionBarDrawerToggle(this@Iasi, drawerLayout, R.string.open, R.string.close)
             drawerLayout.addDrawerListener(toggle)
@@ -72,6 +102,19 @@ class Iasi : AppCompatActivity() {
         }
 
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK)
+        {
+            val imageBitmap = data?.extras?.get("data") as Bitmap
+            imageView.setImageBitmap(imageBitmap)
+        }
+        else
+        {
+            super.onActivityResult(requestCode, resultCode, data)
+
+        }
+    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)){
@@ -79,4 +122,5 @@ class Iasi : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
 }

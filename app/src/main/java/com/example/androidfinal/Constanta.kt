@@ -3,6 +3,7 @@ package com.example.androidfinal
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -14,11 +15,21 @@ class Constanta : AppCompatActivity() {
 
     lateinit var binding : ActivityConstantaBinding
     lateinit var toggle: ActionBarDrawerToggle
-
+    private lateinit var button : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityConstantaBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        button = findViewById(R.id.shareButton)
+        val url = "https://www.youtube.com/watch?v=JYrbT_h1T7Q"
+        button.setOnClickListener{
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.type = "text/plain"
+            intent.putExtra("Share this", url)
+            val chooser = Intent.createChooser(intent, "Share using...")
+            startActivity(chooser)
+
+        }
         binding.apply {
             toggle = ActionBarDrawerToggle(this@Constanta, drawerLayout, R.string.open, R.string.close)
             drawerLayout.addDrawerListener(toggle)
